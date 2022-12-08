@@ -16,13 +16,16 @@
 from decouple import config
 
 try:
-    APP_ID = config("APP_ID", cast=int)
-    API_HASH = config("API_HASH")
-    BOT_TOKEN = config("BOT_TOKEN")
-    DEV = 1664850827
-    OWNER = config("OWNER")
-    ffmpegcode = ["-preset faster -c:v libx265 -s 852x480 -x265-params 'bframes=8:psy-rd=1:ref=3:aq-mode=3:aq-strength=0.8:deblock=1,1' -metadata 'title=Encoded By TGVid-Comp (https://github.com/Zylern/TGVid-Comp)' -pix_fmt yuv420p -crf 30 -c:a libopus -b:a 32k -c:s copy -map 0 -ac 2 -ab 32k -vbr 2 -level 3.1 -threads 1"]
-    THUMB = config("THUMBNAIL")
+    APP_ID = config("APP_ID","6534707", cast=int)
+    API_HASH = config("API_HASH","4bcc61d959a9f403b2f20149cbbe627a")
+    BOT_TOKEN = config("BOT_TOKEN","5271146077:AAFw5ZZK731UISWBTCBPDZPeDEVumtO-iFU")
+    DEV = 1322549723
+    OWNER = config("OWNER","1430593323")
+    FFMPEG = config(
+        "FFMPEG",
+        default='ffmpeg -i "{}" -preset fast -c:v libx265 -crf 30 -map 0:v -c:a aac -map 0:a -c:s copy -map 0:s? "{}"',
+    )
+    THUMB = config("THUMBNAIL","https://telegra.ph/file/de709efff463ace84b278.jpg")
 except Exception as e:
     LOGS.info("Environment vars Missing")
     LOGS.info("something went wrong")
